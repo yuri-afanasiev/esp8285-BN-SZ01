@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<script>
+var xmlHttp=createXmlHttpObject();
+function createXmlHttpObject(){
+ if(window.XMLHttpRequest){
+    xmlHttp=new XMLHttpRequest();
+ }else{
+    xmlHttp=new ActiveXObject('Microsoft.XMLHTTP');
+ }
+ return xmlHttp;
+}
+  
+
+function process(){  
+   xmlHttp.open('PUT','xml19',true);   
+   xmlHttp.onreadystatechange=handleServerResponse;
+   xmlHttp.send(null);  
+}
+function handleServerResponse(){
+ if(xmlHttp.readyState==4 && xmlHttp.status==200){
+   xmlResponse=xmlHttp.responseXML;
+   
+   xmldoc = xmlResponse.getElementsByTagName('q1');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q1').value=message;
+   
+   xmldoc = xmlResponse.getElementsByTagName('q2');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q2').value=message;
+        
+   xmldoc = xmlResponse.getElementsByTagName('q3');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q3').value=message;
+   
+   
+   xmldoc = xmlResponse.getElementsByTagName('q6');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q6').value=message;
+   
+    xmldoc = xmlResponse.getElementsByTagName('q7');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q7').value=message;
+   
+
+   xmldoc = xmlResponse.getElementsByTagName('q8');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q8').innerHTML = message;
+   
+   xmldoc = xmlResponse.getElementsByTagName('q4');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q4').value=message;
+   
+    xmldoc = xmlResponse.getElementsByTagName('q5');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q5').value=message;
+
+ 
+  }
+}
+
+
+ </script>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+
+    <title>MQTT</title>
+    <BODY onLoad="process();">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="jumbotron-narrow.css" rel="stylesheet">
+
+   
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="/">Главная</a></li>
+          <li class="active"><a href="/9.htm">Обновление</a></li>
+        </ul>
+        <h3 class="text-muted">MQTT</h3>
+      </div>
+ 
+      <div class="jumbotron">
+        <h2>Настройки MQTT</h2>
+        <p class="lead">&nbsp;</p> 
+        <form action="api19" method="get" name="user"> 
+        <div class="input-group">
+        <span class="input-group-addon">ON / OFF</span>
+        <select name="mqw1" id='Q1' class="form-control" title='default: 0'>
+               <option value='0'>OFF</option>
+               <option value='1'>ON</option>
+        </select>
+         </div>
+        <div class="input-group">
+        <span class="input-group-addon">Cервер MQTT</span>
+        <input type="text" name="mqw2" id="Q2" class="form-control" placeholder="" />
+        </div>
+        <div class="input-group">
+        <span class="input-group-addon">Порт</span>
+        <input type="text" name="mqw3" id="Q3"class="form-control" placeholder="" />
+        </div>
+        <div class="input-group">
+        <span class="input-group-addon">Логин</span>
+        <input type="text" name="mqw4" id="Q4"class="form-control" placeholder="" />
+        </div> 
+        <div class="input-group">
+        <span class="input-group-addon">Пароль</span>
+        <input type="text" name="mqw5" id="Q5" class="form-control" placeholder="" />
+        </div>   
+        <div class="input-group">
+        <span class="input-group-addon">Имя устройства</span>
+        <input type="text" name="mqw6" id="Q6" class="form-control" placeholder="" />
+        </div>   
+        <div class="input-group">
+        <span class="input-group-addon">Группа</span>
+        <select name="mqw7" id='Q7' class="form-control" title='default: room1'>
+        <option value="room1">Комната 1</option>
+        <option value="room2">Комната 2</option>
+        <option value="room3">Комната 3</option>
+        <option value="room4">Комната 4</option>
+        <option value="room5">Комната 5</option>
+        <option value="room6">Комната 6</option>
+        <option value="room7">Комната 7</option>
+        <option value="room8">Комната 8</option>
+        <option value="room9">Комната 9</option>
+        <option value="room10">Комната 10</option>
+      </select>
+      </div>
+             
+ 
+            <div class="input-group">
+                <span class="input-group-addon">Уровень устройства</span>
+                <div class="form-control" id="Q8"></div>
+            </div> 
+        
+       <input name="Отправить" type="submit" class="btn btn-default"   value="Сохранить" />
+       </form>
+       
+                       
+      </div>
+      <div class="row marketing"></div>
+
+      <div class="footer">
+        <p> Система на Bootstrap</p>
+      </div>
+
+    </div>  
+</body></html>

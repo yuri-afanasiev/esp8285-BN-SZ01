@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<script>
+var xmlHttp=createXmlHttpObject();
+function createXmlHttpObject(){
+ if(window.XMLHttpRequest){
+    xmlHttp=new XMLHttpRequest();
+ }else{
+    xmlHttp=new ActiveXObject('Microsoft.XMLHTTP');
+ }
+ return xmlHttp;
+}
+  
+
+function process(){  
+   xmlHttp.open('PUT','xml20',true);   
+   xmlHttp.onreadystatechange=handleServerResponse;
+   xmlHttp.send(null);  
+}
+function handleServerResponse(){
+ if(xmlHttp.readyState==4 && xmlHttp.status==200){
+   xmlResponse=xmlHttp.responseXML;
+   
+   xmldoc = xmlResponse.getElementsByTagName('q1');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q1').value=message;
+   
+   xmldoc = xmlResponse.getElementsByTagName('q2');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q2').value = message;
+
+   xmldoc = xmlResponse.getElementsByTagName('q3');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q3').value = message;
+        
+    
+  }
+}
+function bnsz01_on() {
+          request = new XMLHttpRequest(); 
+          request.onreadystatechange; 
+request.open ('GET', '/led?re1=1023', true); 
+request.send (''); 
+} 
+ function bnsz01_off(){
+          request = new XMLHttpRequest(); 
+          request.onreadystatechange; 
+          request.open('GET', '/led?re1=0', true);
+request.send (''); 
+} 
+ function bnsz01_30(){
+          request = new XMLHttpRequest(); 
+          request.onreadystatechange; 
+          request.open('GET', '/led?re1=300', true);
+request.send (''); 
+} 
+ function bnsz01_50(){
+          request = new XMLHttpRequest(); 
+          request.onreadystatechange; 
+          request.open('GET', '/led?re1=500', true);
+request.send (''); 
+} 
+ function bnsz01_90(){
+          request = new XMLHttpRequest(); 
+          request.onreadystatechange; 
+          request.open('GET', '/led?re1=900', true);
+request.send (''); 
+} 
+ </script>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+
+    <title>Настройка BN-SZ01</title>
+    <BODY onLoad="process();">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="jumbotron-narrow.css" rel="stylesheet">
+
+   
+  </head>
+
+  <body>
+
+      <div class="container">
+          <div class="header">
+              <ul class="nav nav-pills pull-right">
+                  <li><a href="/">Главная</a></li>
+                  <li class="active"><a href="/9.htm">Обновление</a></li>
+              </ul>
+              <h3 class="text-muted">BN-SZ01</h3>
+          </div>
+
+          <div class="jumbotron">
+              <h2>Настройка</h2>
+              <p class="lead">&nbsp;</p>
+              <form action="api20" method="post" name="user">
+                  <div class="input-group">
+                      <span class="input-group-addon">ON / OFF при включении</span>
+                      <select name="re1" id='Q1' class="form-control" title='default: 0'>
+                          <option value='0'>OFF</option>
+                          <option value='1000'>ON</option>
+                      </select>
+                  </div>
+                  <div class="input-group">
+                      <span class="input-group-addon">Запоминать % состояние</span>
+                      <select name="re2" id='Q2' class="form-control" title='default: 0'>
+                          <option value='0'>OFF</option>
+                          <option value='1'>ON</option>
+                      </select>
+                  </div>
+                  <div class="input-group">
+                      <span class="input-group-addon">Плавное включение</span>
+                      <select name="re3" id='Q3' class="form-control" title='default: 0'>
+                          <option value='0'>OFF</option>
+                          <option value='1'>ON</option>
+                      </select>
+                  </div>
+                  <br>
+                  <input type="submit" class="btn btn-default" value="Сохранить" />
+              </form>
+          </div>
+          <div class="jumbotron">
+              <p class="lead">&nbsp;</p>
+              <a class="btn btn-lg btn-success" onclick="bnsz01_on();">ON</a>
+              <a class="btn btn-default" onclick="bnsz01_off();">OFF</a>
+              <a class="btn btn-danger" onclick="bnsz01_30();">30%</a>
+              <a class="btn btn-success" onclick="bnsz01_50();">50%</a>
+              <a class="btn btn-primary" onclick="bnsz01_90();">90%</a>
+          </div>
+
+          <div class="row marketing"></div>
+
+          <div class="footer">
+              <p> Система на Bootstrap</p>
+          </div>
+
+      </div>  
+</body></html>

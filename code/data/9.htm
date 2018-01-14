@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+ <script>
+var xmlHttp=createXmlHttpObject();
+function createXmlHttpObject(){
+ if(window.XMLHttpRequest){
+    xmlHttp=new XMLHttpRequest();
+ }else{
+    xmlHttp=new ActiveXObject('Microsoft.XMLHTTP');
+ }
+ return xmlHttp;
+}
+function process(){  
+   xmlHttp.open('GET','xml9',true);   
+   xmlHttp.onreadystatechange=Serverupdate;
+   xmlHttp.send(null);  
+}
+function Serverupdate(){
+ if(xmlHttp.readyState==4 && xmlHttp.status==200){
+   xmlResponse=xmlHttp.responseXML;
+   xmldoc = xmlResponse.getElementsByTagName('q1');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q1').innerHTML=message;  
+  
+  }
+}
+ </script>
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+
+    <title>Обновление</title>
+    <BODY onLoad="process();">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="jumbotron-narrow.css" rel="stylesheet">
+
+   
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="/">Главная</a></li>
+          
+        
+        </ul>
+        <h3 class="text-muted">&nbsp; </h3>
+      </div>
+ 
+      <div class="jumbotron">
+        <h2>Текущая версия</h2>
+        <p class="lead">&nbsp;</p> 
+        
+                 
+         <h2><div  class="label label-warning" id="Q1">0.0</div></h2>
+        
+        <p class="lead">&nbsp;</p> 
+          <a class="btn btn-primary" href="/esp_update?fs_bin=http://esptest.esy.es/project3/build/fs.bin&code_bin=http://esptest.esy.es/project3/build/code.bin" ">ОБНОВИТЬ</a> 
+               
+      </div>
+      <div class="row marketing"></div>
+
+      <div class="footer">
+
+
+
+ 
+
+
+        <p> Система на Bootstrap</p>
+      </div>
+
+    </div>  
+</body></html>
