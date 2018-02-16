@@ -1,6 +1,6 @@
 void wifi() {
       WiFi.disconnect();
-      WiFi.hostname ("LED1");
+      WiFi.hostname ("BN-SZ01");
       WiFi.mode(WIFI_STA);  
       WiFi.begin(w1.c_str(), w2.c_str());
       int i = 0;

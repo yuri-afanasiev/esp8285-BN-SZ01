@@ -1,9 +1,9 @@
 void api19() {
      mqw1 = server.arg("mqw1").toInt();//on 1/ off 0
-     mqw2 = server.arg("mqw2"); //сервер MQTT 
-     mqw3 = server.arg("mqw3").toInt(); //Порт    
-     mqw4 = server.arg("mqw4"); //Логин MQTT
-     mqw5 = server.arg("mqw5"); //Пароль MQTT
+     mqw2 = server.arg("mqw2"); //  сервер MQTT 
+     mqw3 = server.arg("mqw3").toInt(); //    Порт    
+     mqw4 = server.arg("mqw4"); //   Логин MQTT
+     mqw5 = server.arg("mqw5"); //  Пароль MQTT
      mqw6 = server.arg("mqw6"); //имя  
      mqw7 = server.arg("mqw7"); //Группа
      mqw8 = server.arg("mqw8").toInt(); //время 
@@ -86,7 +86,7 @@ String  url1="<?xml version='1.0'?>";
         url1+=mqw7;// 
         url1+="</q7>";
         url1+="<q8>";
-        url1+=top3;// 
+        url1+=top3 + "bn-sz01";// уровень устройства
         url1+="</q8>";
         url1+="<q9>";
         url1+=mqw9;// 
@@ -94,6 +94,13 @@ String  url1="<?xml version='1.0'?>";
         url1+="<q10>";
         url1+=mqw10;// 
         url1+="</q10>";
+
+        url1+="<q11>";
+        url1+=top2 + "bn-sz01";// уровень комнаты 
+        url1+="</q11>";
+        url1+="<q12>";
+        url1+=top1 + "bn-sz01";// уровень дома
+        url1+="</q12>";
         url1+="</Donnees>"; 
 server.send(200,"text/xml",url1);
 }         

@@ -45,6 +45,14 @@ function handleServerResponse(){
    xmldoc = xmlResponse.getElementsByTagName('q8');
    message = xmldoc[0].firstChild.nodeValue;
    document.getElementById('Q8').innerHTML = message;
+
+   xmldoc = xmlResponse.getElementsByTagName('q11');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q11').innerHTML = message;
+
+   xmldoc = xmlResponse.getElementsByTagName('q12');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q12').innerHTML = message;
    
    xmldoc = xmlResponse.getElementsByTagName('q4');
    message = xmldoc[0].firstChild.nodeValue;
@@ -138,6 +146,16 @@ function handleServerResponse(){
             <div class="input-group">
                 <span class="input-group-addon">Уровень устройства</span>
                 <div class="form-control" id="Q8"></div>
+            </div> 
+
+            <div class="input-group">
+                <span class="input-group-addon">Уровень комнаты </span>
+                <div class="form-control" id="Q11"></div>
+            </div> 
+
+            <div class="input-group">
+                <span class="input-group-addon">Уровень дома</span>
+                <div class="form-control" id="Q12"></div>
             </div> 
         
        <input name="Отправить" type="submit" class="btn btn-default"   value="Сохранить" />
