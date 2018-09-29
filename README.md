@@ -5,7 +5,10 @@
 
 ![4](https://raw.githubusercontent.com/yuri-afanasiev/esp8285-BN-SZ01/master/doc/BN-SZ01.jpg)
 
- 
+## Прошивки для других устройств:
+- [Sonoff Touch](https://github.com/yuri-afanasiev/sonoff-touch)
+- [Sonoff S20](https://github.com/yuri-afanasiev/sonoff-s20)
+
 ## Установка
 Загрузка прошивки с помощью NodeMCU Flasher  https://github.com/nodemcu/nodemcu-flasher
 Скачать можно [тут](https://github.com/nodemcu/nodemcu-flasher/blob/master/Win32/Release/ESP8266Flasher.exe)
