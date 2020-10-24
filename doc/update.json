@@ -2,5 +2,7 @@
   "d1": 0.05,
   "version_new": 0.05,
   "code_bin": "http://esptest.esy.es/project3/build/code.bin",
-  "fs_bin": "http://esptest.esy.es/project3/build/fs.bin"
+  "fs_bin": "http://esptest.esy.es/project3/build/fs.bin",
+  "esp8266_code_bin": "",
+  "esp8266_fs_bin": ""
 }
